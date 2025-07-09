@@ -1,0 +1,696 @@
+/* リセット・基本設定 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ログイン・登録画面 */
+
+#login-container {
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.auth-form h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-help {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.auth-switch {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e5e9;
+}
+
+.auth-switch p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: #667eea;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: inherit;
+    padding: 0;
+}
+
+.link-button:hover {
+    color: #764ba2;
+}
+
+.demo-accounts {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+/* ボタンスタイル */
+
+.btn-primary,
+.btn-secondary,
+.btn-success {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+
+/* メイン画面レイアウト */
+
+#main-container {
+    display: grid;
+    grid-template-areas: "header header" "sidebar main";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 300px 1fr;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+
+/* ヘッダー */
+
+.header {
+    grid-area: header;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#user-name {
+    font-weight: 600;
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+.user-info .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+
+/* サイドバー */
+
+.sidebar {
+    grid-area: sidebar;
+    background: white;
+    border-right: 1px solid #e1e5e9;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.progress-overview {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.progress-overview h3 {
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.curriculum-nav h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+.curriculum-nav ul {
+    list-style: none;
+}
+
+.curriculum-nav li {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.curriculum-nav li:hover {
+    background: #f8f9fa;
+    border-left-color: #667eea;
+}
+
+.curriculum-nav li.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-left-color: white;
+}
+
+.curriculum-nav li.completed {
+    background: #d4edda;
+    border-left-color: #28a745;
+    position: relative;
+}
+
+.curriculum-nav li.completed::after {
+    content: "✓";
+    position: absolute;
+    right: 0.75rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+
+/* メインコンテンツ */
+
+.main-content {
+    grid-area: main;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.lesson-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* ウェルカム画面 */
+
+.welcome-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+
+/* レッスン画面 */
+
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e1e5e9;
+}
+
+.lesson-header h2 {
+    color: #333;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.status-badge.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.incomplete {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.section {
+    background: white;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #667eea;
+}
+
+.code-block {
+    background: #2d3748;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+}
+
+.code-block code {
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.explanation-content {
+    line-height: 1.8;
+    color: #555;
+}
+
+.explanation-content p {
+    margin-bottom: 1rem;
+}
+
+.explanation-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.exercise-content {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+}
+
+.code-editor {
+    margin: 1.5rem 0;
+}
+
+.code-editor h4 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#code-input {
+    width: 100%;
+    min-height: 200px;
+    max-height: none;
+    padding: 1rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    resize: none;
+    background: #2d3748;
+    color: #e2e8f0;
+    overflow: hidden;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+#code-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.output-section {
+    margin-top: 1.5rem;
+}
+
+.output-section h4 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.output-display {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    min-height: 100px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.output-display.success {
+    border-left: 4px solid #28a745;
+}
+
+.output-display.error {
+    border-left: 4px solid #dc3545;
+    color: #ffb3ba;
+}
+
+
+/* 出力例表示エリア */
+
+.expected-output-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #e8f4fd;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+}
+
+.expected-output-section h4 {
+    margin-bottom: 0.5rem;
+    color: #0056b3;
+}
+
+.expected-output-display {
+    background: #f8f9fa;
+    color: #333;
+    padding: 1rem;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    border: 1px solid #dee2e6;
+}
+
+
+/* 保存済みコード表示 */
+
+.saved-code-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+.saved-code-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.saved-code-item {
+    border: 1px solid #e1e5e9;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.saved-code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.saved-code-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.saved-code-preview {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.8rem;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.btn-info {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #138496;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+
+/* 結果表示エリア */
+
+.result-section,
+.solution-section {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.result-message.success {
+    background: #d4edda;
+    border-left-color: #28a745;
+    color: #155724;
+}
+
+.result-message.error {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+    color: #721c24;
+}
+
+.result-message h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.result-actions,
+.solution-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.solution-section {
+    background: #e2e3e5;
+    border-left-color: #6c757d;
+    color: #383d41;
+}
+
+.solution-section h4 {
+    margin-bottom: 1rem;
+    color: #495057;
+}
+
+.solution-section .code-block {
+    margin-bottom: 1rem;
+    background: #2d3748;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.solution-section .code-block code {
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    white-space: pre;
+}
+
+
+/* ボタンの追加スタイル */
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    #main-container {
+        grid-template-areas: "header" "main";
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .main-content {
+        padding: 1rem;
+    }
+    .welcome-stats {
+        grid-template-columns: 1fr;
+    }
+    .lesson-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .editor-actions {
+        flex-direction: column;
+    }
+}
