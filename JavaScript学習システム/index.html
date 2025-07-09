@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript学習システム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ログイン画面 -->
+    <div id="login-container" class="container">
+        <div class="auth-form">
+            <h1>JavaScript学習システム</h1>
+
+            <!-- ログインフォーム -->
+            <div id="login-form-section">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="user-id">ユーザーID:</label>
+                        <input type="text" id="user-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">パスワード:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">ログイン</button>
+                </form>
+
+                <div class="auth-switch">
+                    <p>アカウントをお持ちでない方は <button id="show-register" class="link-button">こちらから登録</button></p>
+                </div>
+
+                <div class="demo-accounts">
+                    <p>デモアカウント:</p>
+                    <p>ID: student1, パスワード: pass123</p>
+                    <p>ID: student2, パスワード: pass456</p>
+                </div>
+            </div>
+
+            <!-- 登録フォーム -->
+            <div id="register-form-section" class="hidden">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-user-id">ユーザーID:</label>
+                        <input type="text" id="reg-user-id" required>
+                        <small class="form-help">3文字以上の英数字</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-name">名前:</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">メールアドレス:</label>
+                        <input type="email" id="reg-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">パスワード:</label>
+                        <input type="password" id="reg-password" required>
+                        <small class="form-help">6文字以上</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password-confirm">パスワード確認:</label>
+                        <input type="password" id="reg-password-confirm" required>
+                    </div>
+                    <button type="submit" class="btn-primary">アカウント作成</button>
+                </form>
+
+                <div class="auth-switch">
+                    <p>既にアカウントをお持ちの方は <button id="show-login" class="link-button">こちらからログイン</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- メイン学習画面 -->
+    <div id="main-container" class="container hidden">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <h1>JavaScript学習システム</h1>
+                <div class="user-info">
+                    <span id="user-name">ユーザー名</span>
+                    <button id="home-btn" class="btn-secondary">ホーム</button>
+                    <button id="logout-btn" class="btn-secondary">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- サイドバー -->
+        <aside class="sidebar">
+            <div class="progress-overview">
+                <h3>学習進捗</h3>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="progress-text">0/14 完了</span>
+            </div>
+
+            <nav class="curriculum-nav">
+                <h3>カリキュラム</h3>
+                <ul id="curriculum-list">
+                    <li data-lesson="variables">変数</li>
+                    <li data-lesson="character">文字</li>
+                    <li data-lesson="string">文字列</li>
+                    <li data-lesson="if">基本構文1(if)</li>
+                    <li data-lesson="while">基本構文2(while)</li>
+                    <li data-lesson="for">基本構文3(for)</li>
+                    <li data-lesson="switch">基本構文4(switch)</li>
+                    <li data-lesson="array">配列</li>
+                    <li data-lesson="function">関数</li>
+                    <li data-lesson="oop1">オブジェクト指向1</li>
+                    <li data-lesson="oop2">オブジェクト指向2</li>
+                    <li data-lesson="list">リスト</li>
+                    <li data-lesson="dictionary">辞書</li>
+                    <li data-lesson="userfunction">ユーザー定義関数</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <!-- ウェルカム画面 -->
+            <div id="welcome-screen" class="lesson-content">
+                <h2>JavaScript学習システムへようこそ！</h2>
+                <p>左側のカリキュラムから学習したい項目を選択してください。</p>
+                <div class="welcome-stats">
+                    <div class="stat-card">
+                        <h3>総レッスン数</h3>
+                        <span class="stat-number">14</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>完了済み</h3>
+                        <span class="stat-number" id="completed-count">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>学習進捗</h3>
+                        <span class="stat-number" id="progress-percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- レッスン画面 -->
+            <div id="lesson-screen" class="lesson-content hidden">
+                <div class="lesson-header">
+                    <h2 id="lesson-title">レッスンタイトル</h2>
+                    <div class="lesson-status">
+                        <span id="lesson-status" class="status-badge">未完了</span>
+                    </div>
+                </div>
+
+                <!-- レッスン概要 -->
+                <section class="section">
+
+                    <h3>レッスン概要</h3>
+                    <div id="lesson-intro" class="intro-content"></div>
+
+                    <!-- 解説 -->
+                    <section class="section">
+                        <h3>解説</h3>
+                        <div id="explanation" class="explanation-content"></div>
+                    </section>
+
+                    <!-- サンプルコードの解説 -->
+                    <section class="section">
+                        <h3>サンプルコードの解説</h3>
+                        <div id="sample-intro" class="intro-content"></div>
+                    </section>
+
+                    <!-- サンプルコード -->
+                    <section class="section">
+                        <h3>サンプルコード</h3>
+                        <div class="code-block">
+                            <pre><code id="sample-code" class="language-javascript"></code></pre>
+                        </div>
+                    </section>
+
+
+                    <!-- 演習問題 -->
+                    <section class="section">
+                        <h3>演習問題</h3>
+                        <div id="exercise-problem" class="exercise-content"></div>
+
+                        <!-- 出力例表示 -->
+                        <div id="expected-output-section" class="expected-output-section hidden">
+                            <h4>期待される出力例</h4>
+                            <div id="expected-output" class="expected-output-display"></div>
+                        </div>
+
+                        <div class="code-editor">
+                            <h4>コードエディタ</h4>
+                            <textarea id="code-input" placeholder="ここにJavaScriptコードを入力してください..."></textarea>
+                            <div class="editor-actions">
+                                <button id="run-code" class="btn-primary">実行</button>
+                                <button id="reset-code" class="btn-secondary">リセット</button>
+                                <button id="show-expected" class="btn-info">出力例を見る</button>
+                                <button id="save-code" class="btn-success">コード保存</button>
+                                <button id="load-saved-code" class="btn-info">保存済みコード</button>
+                                <button id="complete-lesson" class="btn-success hidden">レッスン完了</button>
+                            </div>
+                        </div>
+
+                        <div class="output-section">
+                            <h4>実行結果</h4>
+                            <div id="output" class="output-display"></div>
+                        </div>
+                    </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="Chapter/Chapter1.js"></script>
+    <script src="Chapter/Chapter2.js"></script>
+    <script src="Chapter/Chapter3.js"></script>
+    <script src="Chapter/Chapter4.js"></script>
+    <script src="Chapter/Chapter5.js"></script>
+    <script src="Chapter/Chapter6.js"></script>
+    <script src="Chapter/Chapter7.js"></script>
+    <script src="Chapter/Chapter8.js"></script>
+    <script src="Chapter/Chapter9.js"></script>
+    <script src="Chapter/Chapter10.js"></script>
+    <script src="Chapter/Chapter11.js"></script>
+    <script src="Chapter/Chapter12.js"></script>
+    <script src="Chapter/Chapter13.js"></script>
+    <script src="Chapter/Chapter14.js"></script>
+</body>
+
+</html>
